@@ -8,19 +8,32 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      mount:true
+      mountInDom:true,
+      ignoredData: 0,
+      randomCount: 66
     }
 
-    this.mountCounter = () => this.setState({mount: true})
-    this.unmountCounter = () => this.setState({mount: false})
+    this.mountInDom = () => this.setState({mountInDom: true})
+    this.unmountInDom = () => this.setState({mountInDom: false})
+
+    this.changeIgnoredData = () => this.setState({ignoredData: Math.random()})
+
+    this.generateRandomCount = () => this.setState({randomCount: Number.parseInt(Math.random()*100)})
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.mountCounter}>Mount Counter</button>
-        <button onClick={this.unmountCounter}>Unmount Counter</button>
-        {this.state.mount ? <Counter /> : null} 
+        <button onClick={this.mountInDom} disabled={this.state.mountInDom}>Mount Counter</button>
+        <button onClick={this.unmountInDom} disabled={!this.state.mountInDom}>Unmount Counter</button>
+        
+        {this.state.mountInDom ?        
+        <Counter 
+          ignoredData={this.state.ignoredData}
+          randomCount={this.state.randomCount}
+        /> : null}
+        <button onClick={this.changeIgnoredData}>Change ignoredData</button>
+        <button onClick={this.generateRandomCount}>Generate Random Counter</button> 
       </div>
     )
   }
