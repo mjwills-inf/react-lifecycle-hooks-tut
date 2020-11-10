@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import ErrorComponent from './ErrorComponent'
 
-// demo component access non-existant value to force error
-
-
-
 export default class Counter extends Component {
   
   constructor (props) {
@@ -32,7 +28,7 @@ export default class Counter extends Component {
   }
 
   // called once when mounted into DOM. handle initial loading, network requests
-  // demo with async setTimeout
+  // demo async request with setTimeout
   componentDidMount() {
     console.log("componentDidMount run")
     setTimeout(() => {
@@ -69,10 +65,10 @@ export default class Counter extends Component {
       return <div>Intialising...</div>
     }
 
-    // if (this.state.error) {
-    //   console.log(this.state.error)
-    //   return <div>We have encountered an error1</div>
-    // }
+    if (this.state.error) {
+      console.log(this.state.error)
+      return <div>We have encountered an error1</div>
+    }
     
     return (
       <div>

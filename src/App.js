@@ -1,5 +1,7 @@
 import './App.css';
-import Counter from './components/counter'
+import Counter from './components/Counter'
+import CounterHook from './components/CounterHook'
+import ColorHook from './components/ColorHook'
 
 import React, { Component } from 'react'
 
@@ -24,6 +26,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <h2>Lifecycle methods</h2>
         <button onClick={this.mountInDom} disabled={this.state.mountInDom}>Mount Counter</button>
         <button onClick={this.unmountInDom} disabled={!this.state.mountInDom}>Unmount Counter</button>
         
@@ -34,6 +37,10 @@ export default class App extends Component {
         /> : null}
         <button onClick={this.changeIgnoredData}>Change ignoredData</button>
         <button onClick={this.generateRandomCount}>Generate Random Counter</button> 
+
+        <h2>Hooks</h2>
+        <CounterHook />
+        <ColorHook />
       </div>
     )
   }
